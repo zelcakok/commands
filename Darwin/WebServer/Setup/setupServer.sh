@@ -10,5 +10,5 @@ sudo cp startServer.sh ~/SelfCommand/startwebserver
 sudo apachectl start
 echo "Server started"
 open http://localhost
-exit
+exit 0
 
