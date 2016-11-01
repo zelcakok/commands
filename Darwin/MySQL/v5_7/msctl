@@ -1,0 +1,27 @@
+#!/bin/bash
+if [ "$1" == "" ]
+then
+	echo "Missing action"
+	exit 1
+else 
+	if [ "$1" == "start" ] || [ "$1" == "stop" ] || [ "$1" == "restart" ]
+	then
+		sudo /usr/local/mysql/support-files/mysql.server $1
+		exit 0
+	else
+		if [ "$1" == "status" ]
+		then
+			ps aux | grep mysql | grep root > /dev/null
+			if [ "$?" == "0" ]
+			then 
+				echo "MySQL server is online"
+				echo ""
+			else 
+				echo "MySQL server is offline"
+				echo ""
+			fi
+		fi
+	fi
+	
+fi
+exit 1
