@@ -1,0 +1,17 @@
+#!/bin/bash
+# The first parameter is project name, second is URL
+if [ "$1" == "" ] 
+	then
+		echo "Please input a URL."
+		exit 1
+	else
+		a=$1
+		b=${a##*/}
+		Folder=${b%????}
+		git clone $1
+		sleep 1
+		cd $Folder
+		echo $1 > .projinfo
+		exit 0
+fi
+exit 0

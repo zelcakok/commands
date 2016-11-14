@@ -1,0 +1,13 @@
+#!/bin/bash
+
+ls /Users/$(whoami)/Documents/C/cpp &> /dev/null
+if test $? -ne 0; then
+ mkdir -p /Users/$(whoami)/Documents/C/cpp
+fi
+if [ "$1" = "" ]; then
+ echo "ERROR: No file name."
+ exit 1
+else
+ echo "#include <stdio.h>" > /Users/$(whoami)/Documents/C/cpp/$1.c
+ nano /Users/$(whoami)/Documents/C/cpp/$1.c
+fi

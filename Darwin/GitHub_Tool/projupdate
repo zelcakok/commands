@@ -1,0 +1,16 @@
+#!/bin/bash
+echo "Get the lastest version of the project."
+git pull
+echo "Project is the lastest version."
+sleep 1
+if [[ "$1" != "" ]]
+	then
+		echo $(whoami): $1 [$(date +%Y-%m-%d_%H:%M:%S)]>>README.md
+		echo "" >> README.md
+		sleep 1
+		git add *
+		git add README.md
+		git commit -a -m "$1"
+		git push
+fi
+exit 0

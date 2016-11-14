@@ -1,0 +1,13 @@
+#!/bin/bash
+#Check environment
+ls /Users/$(whoami)/Documents/C/out &> /dev/null
+if test $? -ne 0; then
+ mkdir -p /Users/$(whoami)/Documents/C/out
+fi
+ls /Users/$(whoami)/Documents/C/cpp &> /dev/null
+if test $? -ne 0; then
+ mkdir -p /Users/$(whoami)/Documents/C/cpp
+fi
+
+ls /Users/$(whoami)/Documents/C/cpp/
+exit 0

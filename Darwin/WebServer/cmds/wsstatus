@@ -1,0 +1,10 @@
+#!/bin/bash
+ps aux | grep httpd | grep root > /dev/null
+if [ $? -eq 1 ] 
+then 
+	echo "Web server is Offline"
+	echo ""
+else
+	echo "Web server is Online"
+	echo ""
+fi

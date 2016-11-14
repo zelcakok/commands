@@ -1,0 +1,10 @@
+#!/bin/bash
+ls /Users/$(whoami)/Documents/C/cpp/$1.c &> /dev/null
+if test $? -ne 0; then
+ echo "ERROR: No such file."
+ exit 1;
+else
+ rm /Users/$(whoami)/Documents/C/cpp/$1.c
+ echo "INFO: $1 has been deleted."
+ exit 0;
+fi

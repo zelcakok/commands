@@ -10,16 +10,43 @@ else
 		exit 0
 	else
 		if [ "$1" == "status" ]
-		then
-			ps aux | grep mysql | grep root > /dev/null
-			if [ "$?" == "0" ]
+			then
+				ps aux | grep mysql | grep root > /dev/null
+				if [ "$?" == "0" ]
+				then 
+					echo "MySQL server is online"
+					echo ""
+				else 
+					echo "MySQL server is offline"
+					echo ""
+				fi
+		elif [ "$1" == "export" ]
+			then
+				if [ "$2" == "" ]
+					then 
+						echo "Missing the database's name."
+						exit 1
+					else 
+						mysqldump -u root -p $2 > ./$2.sql
+				fi
+		elif [ "$1" == "import" ]
 			then 
-				echo "MySQL server is online"
-				echo ""
-			else 
-				echo "MySQL server is offline"
-				echo ""
-			fi
+				if [ "$2" == "" ] || [ "$3" == "" ] 
+					then 
+						echo "Missing the database's name or sql file."
+						exit 1
+					else 
+						mysqldump -u root -p $2 < ./$3
+				fi
+		elif [ "$1" == "connect" ]
+			then 
+				if [ "$2" == "" ]
+					then 
+						echo "Missing the username or database name."
+						exit 1
+					else 
+						mysql -u $2 -p
+				fi
 		fi
 	fi
 	
