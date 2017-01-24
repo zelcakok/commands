@@ -1,0 +1,25 @@
+#!/bin/bash
+if [ "$1" = "" ]; then
+  ls ~/SelfCommand
+
+elif [ "$1" = "-dir" ]; then
+  open -a "Finder" ~/SelfCommand
+
+elif [ "$1" = "/?" ]; then
+  echo "cmdctl [-update] [-edit] [-del] [-add] [filename]"
+
+elif [ "$1" = "-update" ]; then
+  cp $2 ~/SelfCommand/$2
+
+elif [ "$1" = "-edit" ]; then
+  open -a "Sublime Text" ~/SelfCommand/$2
+
+elif [ "$1" = "-del" ]; then
+  rm ~/SelfCommand/$2
+
+elif [ "$1" = "-add" ]; then
+  echo "#!/bin/bash" >> ~/SelfCommand/$2
+  echo "" >> ~/SelfCommand/$2
+  chmod a+x ~/SelfCommand/$2
+  cmdctl -edit $2
+fi
