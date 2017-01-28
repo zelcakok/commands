@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ "$1" = "" ]; then
+ echo "ERROR: No file name.";
+ exit 1
+fi
+
+ls ~/SelfCommand &> /dev/null
+if test $? -ne 0; then
+ echo "SelfCommand folder missing, creating ~/SelfCommand..."
+ mkdir ~/SelfCommand
+fi
+
+ls $1 &> /dev/null
+if test $? -ne 0; then
+ echo "No such file."
+ exit 1
+fi
+
+echo "Installing $1, please wait..."
+cp -r $1/* ~/SelfCommand
+if test $? -ne 0; then
+ echo "Installation failed"
+ exit 1
+fi 
+
+echo "$1 is installed"
+exit 0
+
+
+
+
