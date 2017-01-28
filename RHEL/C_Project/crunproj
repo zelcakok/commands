@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#Check if project exist
+ls ~/C_Project/$1/out/$1.out &> /dev/null
+if test $? -ne 0; then
+ echo "No such project / No binary file found."
+ exit 1
+fi
+
+~/C_Project/$1/out/$1.out
+

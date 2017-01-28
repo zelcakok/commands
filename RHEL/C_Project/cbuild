@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#Check environment
+ls ~/C_Project/$1/out &> /dev/null
+if test $? -ne 0; then
+ mkdir -p ~/C_Project/$1/out
+fi
+
+#Build from .c
+ls ~/C_Project/$1/cpp/$1.c &> /dev/null
+if test $? -ne 0; then
+ echo "ERROR: No such file."
+ exit 1
+else
+ cc ~/C_Project/$1/cpp/$1.c -o ~/C_Project/$1/out/$1.out
+fi

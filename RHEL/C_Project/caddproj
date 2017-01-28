@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#Installation
+ls ~/C_Project &> /dev/null
+if test $? -ne 0; then
+ mkdir ~/C_Project
+fi
+
+#Check Project name
+if [ "$1" = "" ]; then
+ echo "ERROR: No file name."
+ exit 1
+fi
+
+ls ~/C_Project/$1/cpp &> /dev/null
+if test $? -ne 0; then
+ mkdir -p ~/C_Project/$1/cpp
+fi
+
+#Create file
+cd ~/C_Project/$1
+echo "#include <stdio.h>" > ~/C_Project/$1/cpp/$1.c
+nano ~/C_Project/$1/cpp/$1.c
+

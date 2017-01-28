@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#Check if project exist
+ls ~/C_Project/$1 &> /dev/null
+if test $? -ne 0; then
+ echo "No such project."
+ exit 1
+fi
+
+nano ~/C_Project/$1/cpp/$1.c

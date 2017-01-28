@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ "$*" = "" ]; then
+ echo "ERROR: Missing parameter.";
+ echo "Usage: minpath on/off";
+fi
+
+if [ "$1" = "on" ]; then
+ bash --rcfile <(echo "PS1='\u-\h-[MinPath]:$ '") -i
+fi
+
+if [ "$1" = "off" ]; then
+ bash --rcfile <(echo "PS1='\u-\h:\$PWD$ '") -i
+fi
